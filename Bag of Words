@@ -1,0 +1,2 @@
+import pandas as pd       
+https://github.com/ScoffM/ITESO-Word2Vec/new/mastertrain = pd.read_csv("labeledTrainData.tsv", header=0, delimiter="\t", quoting=3)
