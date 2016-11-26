@@ -21,7 +21,6 @@ converters = { "FullDescription" : identity
 
 print "Loading Data..."
 train = pd.read_csv("Train_rev1.csv", converters = converters)
-test =  pd.read_csv("Test_rev1.csv",  converters = converters)
 
 model = Word2Vec.load("300features_30minwords_10context")
 
@@ -75,26 +74,8 @@ trainDataVecs = getAvgFeatureVecs(clean_train_postings, model, num_features)
 train_new = pd.concat([pd.DataFrame(data=trainDataVecs), pd.DataFrame(train["SalaryNormalized"])],axis=1, join='inner')
 train_new.to_csv("Train_Average.csv", index=False, quoting=3)
 
-# Delete Variables to Save Memory? 
-del train 
-del trainDataVecs
-
-print "Creating average feature vecs for test postings"
-
-
-
-clean_test_postings = []
-for posting in test["FullDescription"]:
-    clean_test_postings.append(description_to_wordlist(posting, remove_stopwords=True))
-
-testDataVecs = getAvgFeatureVecs(clean_test_postings, model, num_features)
-test_new = pd.DataFrame(data= testDataVecs)
-test_new.to_csv( "Test_Average.csv", index=False, quoting=3 )
-
 print "Done!"
 master_end = time.time()
-
 master_elapsed = (master_end - master_start)/60
-
 print "Time to build ", master_elapsed, "minutes"
 
