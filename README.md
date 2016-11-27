@@ -1,13 +1,27 @@
 # ITESO-Word2Vec
 Team development of Word2Vec algorithm for Kaggle Competition
 
+## Salaries Modules Order
+1. Salaries_Word2Vec.py: 
+
+  Loads Train, Test and Validation data from kaggle, and trains a Word2Vec model.
+2. Salaries_Average_Feature_Vector.py:
+
+  Takes the trained w2v model and does vector averages, creates a new_train.csv
+3. Salary_XGB_CV.py:
+
+  Loads new_train.csv, then proceeds to train and cross validate a boosted trees method through XGB library
+
+## Current Results
+
+1. Word2Vec: MAE 7522.1393 +/- 10.9207
+2. Doc2Vec : MAE xxxx.xxxx +/- xx.xxxx
+2. TFIDF_C : MAE xxxx.xxxx +/- xx.xxxx
+
 ## To do list:
 1. Implementar el tf-idf y ver si ayuda al poder predictivo en el tutorial
-2. Intentar implementar doc2vec: ver si es similar que el word2vec, y ver si eso ayuda al poder predictivo en el tutorial
-3. Implementar en UK job descriptions (https://www.kaggle.com/c/job-salary-prediction/data)
-  a. Hacer un modelo predictivo para esos datos del salary prediction, obteniendo nuevas variables predictoras
-  b. Ver qué hizo la gente en los primeros lugares de ese concurso
-4. ? 
-  
+2. Aplicar "WoE" a variables categoricas de dataframe original. 
+3. Tratar de tunnear modelos para mejores resultados. 
+4. Iniciar Presentación PAP
 
   
