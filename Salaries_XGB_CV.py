@@ -8,7 +8,11 @@ master_start = time.time()
 print "Loading Data..."
 cwd = os.getcwd()
 data = pd.read_csv(cwd +"\\Datos\\Train_Average.csv")
+data_woe = pd.read_csv(cwd +"\\Datos\\WoE_Features.csv").drop(["Unnamed: 0", "SalaryNormalized"], axis = 1)
+data = pd.concat([data, data_woe],axis=1, join='inner')
+del data_woe
 train, test = train_test_split(data, test_size=.2, random_state=0)
+print "Data Loaded. Processing..."  
 
 predictors = data.columns.values.tolist()
 predictors.remove("SalaryNormalized")
@@ -16,10 +20,8 @@ train_x = train[predictors]
 test_x = test[predictors]
 test_y = test["SalaryNormalized"]
 train_y = train["SalaryNormalized"]
-
 del data # "Unloading" might help memory
-
-print "Data Loaded. Processing..."
+print "Processing Complete..."
 
 
 # Native interface implementation
@@ -37,11 +39,9 @@ params = {
 }
 
 watchlist  = [(xgtest,'test'), (xgtrain,'train')]
-
 num_rounds = 1000
 
 #bst = xgb.train(params, xgtrain, num_rounds, watchlist, early_stopping_rounds  = 10)
-
 bst = xgb.cv(params, xgtrain, num_rounds, nfold=3, metrics = {'mae'}, early_stopping_rounds  = 5, seed = 1)
 
 print bst
@@ -50,5 +50,5 @@ print "Done!"
 master_end = time.time()
 master_elapsed = (master_end - master_start)/60
 print "Time to build ", master_elapsed, "minutes"
-
+bst.to_csv("CV_results")
 
