@@ -13,8 +13,8 @@ Team development of Word2Vec algorithm for Kaggle Competition
   Loads new_train.csv, then proceeds to train and cross validate a boosted trees method through XGB library
 
 ## Current Results
-
-1. Word2Vec: MAE 7522.1393 +/- 10.9207
+	
+1. Word2Vec: MAE 7173.8247 +/- 03.3957
 2. Doc2Vec : MAE xxxx.xxxx +/- xx.xxxx
 2. TFIDF_C : MAE xxxx.xxxx +/- xx.xxxx
 
