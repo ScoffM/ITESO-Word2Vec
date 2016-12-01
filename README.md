@@ -15,7 +15,7 @@ Team development of Word2Vec algorithm for Kaggle Competition
 ## Current Results
 	
 1. Word2Vec: MAE 7173.8247 +/- 03.3957
-2. Doc2Vec : MAE xxxx.xxxx +/- xx.xxxx
+2. Doc2Vec : MAE 8002.9410 +/- 129.9566
 2. TFIDF_C : MAE xxxx.xxxx +/- xx.xxxx
 
 ## To do list:
